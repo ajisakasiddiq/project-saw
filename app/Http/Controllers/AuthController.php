@@ -92,8 +92,6 @@ class AuthController extends Controller
             $save->hash = Str::random(40);
             $save->password = Hash::make($request->password);
             $save->save();
-
-            Mail::to($save->email)->send(new RegisterMail($save));
             return redirect()->route('auth')->with('success', 'Registrasi akun berhasil, cek email untuk verifikasi akun!');
         } else {
             return redirect()->route('registrasi')->with('error', 'Registrasi akun gagal, karena nim yang dimasukkan tidak terdaftar!');
