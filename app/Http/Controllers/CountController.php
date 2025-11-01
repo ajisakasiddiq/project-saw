@@ -131,14 +131,14 @@ class CountController extends Controller
 
     public function detail($id)
     {
-        $alternatif = DB::table('alternatif')
-            ->join('mahasiswa', 'alternatif.id_mahasiswa', '=', 'mahasiswa.id')
+        $alternatif = DB::table('values')
+            ->join('mahasiswa', 'values.id_mahasiswa', '=', 'mahasiswa.id')
             ->join('jurusan', 'mahasiswa.id_jurusan', '=', 'jurusan.id')
             ->join('prodi', 'mahasiswa.id_prodi', '=', 'prodi.id')
-            ->join('form', 'alternatif.id_form', '=', 'form.id')
-            ->orderBy('alternatif.id', 'DESC')
-            ->where('alternatif.id_form', '=', $id)
-            ->where('alternatif.sub_bobot', '!=', '')
+            ->join('form', 'values.id_form', '=', 'form.id')
+            ->orderBy('values.id', 'DESC')
+            ->groupBy('values.id_mahasiswa')
+            ->where('values.id_form', '=', $id)
             ->get();
 
         $form = DB::table('form')
