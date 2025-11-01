@@ -20,7 +20,7 @@ class RegisterController extends Controller
 
         $cek_mhs = $alternatif->id;
 
-        $cek_alt = DB::table('alternatif')
+        $cek_alt = DB::table('values')
             ->where('id_mahasiswa', '=', $cek_mhs)
             ->first();
 
