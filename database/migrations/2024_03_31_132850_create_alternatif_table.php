@@ -16,10 +16,7 @@ return new class extends Migration
             $table->foreignId('id_mahasiswa')->constrained('mahasiswa')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('id_form')->constrained('form')->onDelete('cascade')->onUpdate('cascade');
             // $table->text("sub_input");
-            $table->text("sub_bobot");
             $table->text("dokumen");
-            $table->float('nilai')->nullable();
-            $table->enum('status', ['0', '1', '2']);
             $table->timestamps();
         });
     }
