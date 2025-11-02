@@ -38,6 +38,9 @@
                                     <tbody>
                                         <?php $no = 1?>
                                         @foreach ($form as $item)
+                                            @php
+                                                $cek_form = $cek->get($item->id);
+                                            @endphp
                                         <tr>
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $item->nama_form }}</td>
@@ -59,27 +62,34 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                @if ($item->status == '2' && empty($cek->id_form))
-                                                <a href="#" class="btn btn-sm btn-info m-1 disabled"><i class="fas fa-edit"></i>
-                                                <b>Detail</b></a>
-                                                @elseif ($item->status == '1' && empty($cek->id_form))
-                                                    <a href="/detail_/{{$item->id}}" class="btn btn-sm btn-info m-1"><i class="fas fa-edit"></i>
-                                                    <b>Detail</b></a>
-                                                @elseif ($item->status == '1' && !empty($cek->id_form))
-                                                    @if($cek->id_form == $item->id)
-                                                        <span class="badge badge-info">Terdaftar</span>
-                                                    @elseif($cek->id_form != $item->id)
-                                                        <a href="/detail_/{{$item->id}}" class="btn btn-sm btn-info m-1"><i class="fas fa-edit"></i>
-                                                        <b>Detail</b></a>
+                                                 @if ($item->status == '2' && empty($cek_form))
+                                                        <a href="#" class="btn btn-sm btn-info m-1 disabled">
+                                                            <i class="fas fa-edit"></i> <b>Detail</b>
+                                                        </a>
+
+                                                    @elseif ($item->status == '1' && empty($cek_form))
+                                                        <a href="/detail_/{{ $item->id }}" class="btn btn-sm btn-info m-1">
+                                                            <i class="fas fa-edit"></i> <b>Detail</b>
+                                                        </a>
+
+                                                    @elseif ($item->status == '1' && !empty($cek_form))
+                                                        @if ($cek_form->id_form == $item->id)
+                                                            <span class="badge badge-info">Terdaftar</span>
+                                                        @else
+                                                            <a href="/detail_/{{ $item->id }}" class="btn btn-sm btn-info m-1">
+                                                                <i class="fas fa-edit"></i> <b>Detail</b>
+                                                            </a>
+                                                        @endif
+
+                                                    @elseif ($item->status == '2' && !empty($cek_form))
+                                                        @if ($cek_form->id_form == $item->id)
+                                                            <span class="badge badge-info">Terdaftar</span>
+                                                        @else
+                                                            <a href="#" class="btn btn-sm btn-info m-1 disabled">
+                                                                <i class="fas fa-edit"></i> <b>Detail</b>
+                                                            </a>
+                                                        @endif
                                                     @endif
-                                                @elseif ($item->status == '2' && !empty($cek->id_form))
-                                                    @if($cek->id_form == $item->id)
-                                                        <span class="badge badge-info">Terdaftar</span>
-                                                    @elseif($cek->id_form != $item->id)
-                                                        <a href="#" class="btn btn-sm btn-info m-1 disabled"><i class="fas fa-edit"></i>
-                                                        <b>Detail</b></a>
-                                                    @endif
-                                                @endif
                                             </td>
                                         </tr>
                                         @endforeach

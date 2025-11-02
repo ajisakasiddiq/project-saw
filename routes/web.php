@@ -80,6 +80,7 @@ Route::group(
         Route::get('/hitung', [CountController::class, 'index'])->name('hitung');
         Route::post('/hitung', [CountController::class, 'index'])->name('hitung');
         Route::get('/detail/{id}', [CountController::class, 'detail']);
+        Route::get('/dokumen/{id_mahasiswa}/{id_form}', [CountController::class, 'download'])->name('pdf.download');
         Route::get('/rank/{id}', [CountController::class, 'rank']);
     }
 );

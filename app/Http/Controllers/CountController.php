@@ -9,6 +9,8 @@ use App\Models\Value;
 use App\Models\College;
 use Illuminate\Http\Request;
 use App\Models\Form;
+use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\DB;
 // use Illuminate\Support\Facades\Response;
 
@@ -153,6 +155,32 @@ class CountController extends Controller
         // $data['nama_form'] = $data['alternatif']->nama_form;
         return view('backend.hitung.detail', $data);
     }
+    public function download($id_mahasiswa, $id_form)
+    {
+        // Ambil data dokumen dari database
+        $data = DB::table('alternatif')
+            ->where('id_mahasiswa', $id_mahasiswa)
+            ->where('id_form', $id_form)
+            ->first();
+
+        if (!$data || !$data->dokumen) {
+            return abort(404, 'Dokumen tidak ditemukan.');
+        }
+
+        $filePath = public_path('document/accounts/' . $data->dokumen);
+
+        if (!file_exists($filePath)) {
+            return abort(404, 'File tidak ditemukan.');
+        }
+
+        // Tampilkan PDF di browser
+        return response()->file($filePath, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $data->dokumen . '"'
+        ]);
+    }
+
+
 
     public function sort($id)
     {

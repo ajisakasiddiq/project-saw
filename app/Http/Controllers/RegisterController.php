@@ -20,15 +20,16 @@ class RegisterController extends Controller
 
         $cek_mhs = $alternatif->id;
 
-        $cek_alt = DB::table('values')
-            ->where('id_mahasiswa', '=', $cek_mhs)
-            ->first();
 
         $form = DB::table('form')->orderBy('created_at', 'desc')->get();
+        $cek = DB::table('values')
+            ->where('id_mahasiswa', '=', $cek_mhs)
+            ->get()
+            ->keyBy('id_form');
 
         $data = [
             'form' => $form,
-            'cek' => $cek_alt
+            'cek' => $cek
         ];
 
         return view('backend.pendaftaran.data', $data);
@@ -104,6 +105,16 @@ class RegisterController extends Controller
 
         $get_mhs = DB::table('mahasiswa')->where('nim', '=', $request->nim)->first();
         $cek = DB::table('kriteria')->get();
+        $savealternatif = new Alternatif();
+        $_file = $request->file('file');
+        $_ekstensi = $_file->extension();
+        $nama_ = date('ymdhis') . "." . $_ekstensi;
+        $_file->move(public_path('document/accounts'), $nama_);
+        $savealternatif->dokumen = $nama_;
+        $savealternatif->id_mahasiswa = $get_mhs->id;
+        $savealternatif->id_form = $request->id_form;
+        $savealternatif->save();
+
 
 
         for ($i = 0; $i < count($cek); $i++) {

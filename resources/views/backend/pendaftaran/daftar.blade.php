@@ -74,8 +74,23 @@
                             required
                         >
                     </div>
-
                     @endfor
+                    <div class="form-group">
+                        <label for="file" class="form-label">File Pendukung (KTP, KK, Surat Keterangan Tidak Mampu, dll)</label>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="file">File Pendukung</span>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" name="file" id="file01" required accept="application/pdf" aria-describedby="file01">
+                                <label class="custom-file-label" for="file">Choose file</label>
+                            </div>
+                        </div>
+                        <small id="fileHelp" class="form-text text-muted">Masukkan file pendukung dalam satu file format <b class="text-danger">PDF</b> dan maksimal ukuran (size) : 3Mb.</small>
+                        @error('file')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
                     <input type="hidden" name="id_form" value="{{$form->id}}">
                     <input type="hidden" name="nim" value="{{$mhs->nim}}">
                     {{-- @endforeach --}}

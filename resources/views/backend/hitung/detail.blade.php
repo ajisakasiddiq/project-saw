@@ -30,7 +30,7 @@
                                             <th>UKT</th>
                                             <th>Ponsel</th>
                                             <th>Alamat</th>
-                                            {{-- <th>Aksi</th> --}}
+                                            <th>Dokumen</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -46,7 +46,7 @@
                                             <th>UKT</th>
                                             <th>Ponsel</th>
                                             <th>Alamat</th>
-                                            {{-- <th>Aksi</th> --}}
+                                            <th>Dokumen</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -64,12 +64,12 @@
                                             <td>{{ $item->ukt_sekarang}}</td>
                                             <td>{{ $item->ponsel }}</td>
                                             <td>{{ $item->alamat }}</td>
-                                            {{-- <td>
-                                                <button data-toggle="modal" data-target="#modaldetail{{$item->id}}" class="btn btn-sm btn-info m-1"><i class="fas fa-eye"></i>
-                                                    <b>Detail</b></button>
-                                                <a href="/gagal/{{$item->id}}" class="btn btn-sm btn-danger m-1 del2"><i class="fas fa-trash-alt"></i>
-                                                    <b>Hapus</b></a>
-                                            </td> --}}
+                                            <td>
+                                                <a href="{{ route('pdf.download', ['id_mahasiswa' => $item->id_mahasiswa, 'id_form' => $item->id_form]) }}"
+                                                    class="btn btn-sm btn-info m-1">
+                                                    <i class="fas fa-download"></i> <b>View</b>
+                                                </a>
+                                            </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
