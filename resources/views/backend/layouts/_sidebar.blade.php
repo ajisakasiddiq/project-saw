@@ -93,22 +93,14 @@
             {{Request::is('editsb*') ? 'active' : ''}}
             {{Request::is('preferensisb') ? 'active' : ''}}
             ">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cubes"></i>
-                    <span>Kriteria & Sub</span>
-                </a>
-                <div id="collapseTwo" class="collapse <?= $status?>" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Kriteria & Sub-Kriteria:</h6>
-                        <a class="collapse-item {{Request::is('kriteria') ? 'active' : ''}}{{Request::is('tambahkt') ? 'active' : ''}}
-                        {{Request::is('editkt*') ? 'active' : ''}}{{Request::is('preferensikt') ? 'active' : ''}}" href="/kriteria">Kriteria</a>
-                        <a class="collapse-item {{Request::is('sub') ? 'active' : ''}}{{Request::is('tambahsb') ? 'active' : ''}}
-                        {{Request::is('editsb*') ? 'active' : ''}}{{Request::is('preferensisb') ? 'active' : ''}}" href="/sub">Sub-Kriteria</a>
-                    </div>
-                </div>
             </li>
 
             <!-- Nav Item - Mahasiswa -->
+            <li class="nav-item {{Request::is('kriteria') ? 'active' : ''}}{{Request::is('tambahkt') ? 'active' : ''}}{{Request::is('editkt*') ? 'active' : ''}}">
+                <a class="nav-link" href="/kriteria">
+                     <i class="fas fa-fw fa-cubes"></i>
+                    <span>Kriteria</span></a>
+            </li>
             <li class="nav-item {{Request::is('mahasiswa') ? 'active' : ''}}{{Request::is('tambahmh') ? 'active' : ''}}{{Request::is('editmh*') ? 'active' : ''}}">
                 <a class="nav-link" href="/mahasiswa">
                     <i class="fas fa-fw fa-users"></i>
