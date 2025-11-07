@@ -18,4 +18,8 @@ class Alternatif extends Model
         'status',
         'description',
     ];
+    public function form()
+    {
+        return $this->belongsTo(Form::class, 'id_form', 'id');
+    }
 }

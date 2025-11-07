@@ -17,4 +17,8 @@ class Form extends Model
         'status',
         'kuota',
     ];
+    public function alternatif()
+    {
+        return $this->hasOne(Alternatif::class, 'id_form', 'id');
+    }
 }

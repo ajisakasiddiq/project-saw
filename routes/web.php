@@ -104,6 +104,7 @@ Route::group(
 );
 
 Route::group(['middleware' => ['auth', 'checkrole:Admin,Pengelola,Mahasiswa']], function () {
+    Route::post('/pendaftaran/{id}/update', [CountController::class, 'update'])->name('alternatif.update');
     Route::get('/keluar', [AuthController::class, 'logout'])->name('logout');
     Route::get('/beranda', [DashboardController::class, 'index'])->name('beranda');
     Route::get('/profil', [ProfileController::class, 'index'])->name('profil');

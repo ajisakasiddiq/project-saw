@@ -62,7 +62,18 @@
                                                 @endif
                                             </td>
                                             <td>
-                                                 @if ($item->status == '2' && empty($cek_form))
+                                                {{-- ✅ Jika ada alternatif dan status_alternatif = 2 --}}
+                                                @if (!empty($item->status_alternatif) && $item->status_alternatif == 2)
+                                                    <span class="badge badge-danger">Dokumen Ditolak</span> <br>
+                                                    <button data-toggle="modal" data-target="#modaldetail{{$item->id}}" class="btn btn-sm btn-info m-1"><i class="fas fa-eye"></i>
+                                                    <b>Upload</b></button>
+                                                   
+                                                
+
+                                                {{-- ✅ Jika tidak ada alternatif → jalankan logic default --}}
+                                                @elseif (empty($item->status_alternatif))
+
+                                                    @if ($item->status == '2' && empty($cek_form))
                                                         <a href="#" class="btn btn-sm btn-info m-1 disabled">
                                                             <i class="fas fa-edit"></i> <b>Detail</b>
                                                         </a>
@@ -90,7 +101,43 @@
                                                             </a>
                                                         @endif
                                                     @endif
+
+
+                                                {{-- ✅ Jika ada alternatif tapi status_alternatif BUKAN 2 → jalankan logic default --}}
+                                                @else
+
+                                                    @if ($item->status == '2' && empty($cek_form))
+                                                        <a href="#" class="btn btn-sm btn-info m-1 disabled">
+                                                            <i class="fas fa-edit"></i> <b>Detail</b>
+                                                        </a>
+
+                                                    @elseif ($item->status == '1' && empty($cek_form))
+                                                        <a href="/detail_/{{ $item->id }}" class="btn btn-sm btn-info m-1">
+                                                            <i class="fas fa-edit"></i> <b>Detail</b>
+                                                        </a>
+
+                                                    @elseif ($item->status == '1' && !empty($cek_form))
+                                                        @if ($cek_form->id_form == $item->id)
+                                                            <span class="badge badge-info">Terdaftar</span>
+                                                        @else
+                                                            <a href="/detail_/{{ $item->id }}" class="btn btn-sm btn-info m-1">
+                                                                <i class="fas fa-edit"></i> <b>Detail</b>
+                                                            </a>
+                                                        @endif
+
+                                                    @elseif ($item->status == '2' && !empty($cek_form))
+                                                        @if ($cek_form->id_form == $item->id)
+                                                            <span class="badge badge-info">Terdaftar</span>
+                                                        @else
+                                                            <a href="#" class="btn btn-sm btn-info m-1 disabled">
+                                                                <i class="fas fa-edit"></i> <b>Detail</b>
+                                                            </a>
+                                                        @endif
+                                                    @endif
+
+                                                @endif
                                             </td>
+
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -99,4 +146,38 @@
                         </div>
                     </div>
                 </div>
+                @foreach ($form as $i)
+                <!-- Modal Tambah Import -->
+                <div class="modal fade" id="modaldetail{{$i->id}}" tabindex="-1">
+                    <div class="modal-dialog modal-xl">
+                        <div class="modal-content">
+                            <form method="POST" action="/pendaftaran/{{$item->id}}/update">
+                            @csrf
+                            <input type="hidden" name="id" value="{{ $item->id_alternatif }}">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Upload Ulang Dokumen</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="mb-2 rounded alert alert-dark"><i class="fas fa-info-circle"></i> Upload Dokumen Sesuai Ketentuan.</p>
+                                        <div class="form-group mb-3">
+                                            <label for="file">Upload</label>
+                                            <div class="custom-file">
+                                                <input type="file" name="file" class="custom-file-input" id="file" required accept="application/pdf">
+                                                <label class="custom-file-label" for="file">Unggah file</label>
+                                            </div>
+                                            <small class="form-text text-success">Unggah file pdf.</small>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Simpan</button>
+                                    </div>
+                             </form>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
 @endsection

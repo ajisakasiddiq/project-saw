@@ -21,7 +21,16 @@ class RegisterController extends Controller
         $cek_mhs = $alternatif->id;
 
 
-        $form = DB::table('form')->orderBy('created_at', 'desc')->get();
+        $form = DB::table('form')
+            ->leftJoin('alternatif', 'alternatif.id_form', '=', 'form.id')
+            ->orderBy('form.created_at', 'desc')
+            ->select(
+                'form.*',
+                'alternatif.status as status_alternatif',
+                'alternatif.id as id_alternatif',
+            )
+            ->get();
+
         $cek = DB::table('values')
             ->where('id_mahasiswa', '=', $cek_mhs)
             ->get()

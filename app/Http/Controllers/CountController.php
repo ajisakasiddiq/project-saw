@@ -169,18 +169,40 @@ class CountController extends Controller
     }
     public function update(Request $request)
     {
-        // dd($request->all());
+        $item = Alternatif::findOrFail($request->id);
 
-
-        $item = Alternatif::find($request->id);
-        // dd($item);
-
+        // Update status dan description dari request
         $item->status = $request->status;
         $item->description = $request->description;
+
+        // ✅ Jika ada file baru yang diupload
+        if ($request->hasFile('file')) {
+
+            // ✅ Hapus file lama jika ada
+            if ($item->dokumen && file_exists(public_path('document/accounts/' . $item->dokumen))) {
+                unlink(public_path('document/accounts/' . $item->dokumen));
+            }
+
+            // ✅ Upload file baru
+            $_file = $request->file('file');
+            $_ekstensi = $_file->extension();
+            $nama_file = date('ymdhis') . "." . $_ekstensi;
+
+            $_file->move(public_path('document/accounts'), $nama_file);
+
+            // ✅ Simpan nama file
+            $item->dokumen = $nama_file;
+
+            // ✅ Jika upload file → paksa status menjadi 1
+            $item->status = 1;
+        }
+
         $item->save();
 
         return back()->with('success', 'Data berhasil diupdate');
     }
+
+
 
     public function download($id_mahasiswa, $id_form)
     {
