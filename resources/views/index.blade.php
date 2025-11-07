@@ -94,7 +94,7 @@
 
         .hero-img {
             flex: 1;
-            margin-top: -100px;
+            margin-top: -130px;
             display: flex;
             justify-content: center;
         }
@@ -222,7 +222,7 @@
 
         <div class="container hero-container">
             <div class="hero-content">
-                <h1>Sistem Pendukung Keputusan<br><span style="font-size:60px;">SPK-SAW</span></h1>
+                <h1>Sistem Pendukung Keputusan Perhitungan UKT<br><span style="font-size:60px;"></span></h1>
                 <h2>Sistem ini digunakan untuk membantu menentukan besaran UKT mahasiswa berdasarkan metode SAW di Politeknik Negeri Banyuwangi.</h2>
                 @if (Route::has('auth'))
                     @auth
