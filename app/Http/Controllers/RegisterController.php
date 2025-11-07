@@ -35,7 +35,7 @@ class RegisterController extends Controller
             ->where('id_mahasiswa', '=', $cek_mhs)
             ->get()
             ->keyBy('id_form');
-
+        // dd($form);
         $data = [
             'form' => $form,
             'cek' => $cek
@@ -80,10 +80,6 @@ class RegisterController extends Controller
 
         $kriteria = DB::table('kriteria')->orderByDesc('bobot')->get();
 
-        foreach ($kriteria as $k) {
-            $subQuery[] = DB::table('sub')->where('id_kriteria', '=', $k->id)->orderBy('sub.bobot', 'ASC')->get();
-        }
-
         $check = DB::table('alternatif')
             ->where('id_mahasiswa', '=', $id_mhs)
             ->first();
@@ -100,7 +96,6 @@ class RegisterController extends Controller
 
         $data = [
             'kriteria' => $kriteria,
-            'sub' => $subQuery,
             'mhs' => $alternatif,
             'status' => $status,
             'form' => $form
