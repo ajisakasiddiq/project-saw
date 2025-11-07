@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('id_form')->constrained('form')->onDelete('cascade')->onUpdate('cascade');
             // $table->text("sub_input");
             $table->text("dokumen");
+            $table->string("description");
+            $table->enum('status', ['0', '1', '2'])->default('0');
             $table->timestamps();
         });
     }

@@ -30,7 +30,9 @@
                                             <th>UKT</th>
                                             <th>Ponsel</th>
                                             <th>Alamat</th>
+                                            <th>Status</th>
                                             <th>Dokumen</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tfoot>
@@ -46,7 +48,9 @@
                                             <th>UKT</th>
                                             <th>Ponsel</th>
                                             <th>Alamat</th>
+                                            <th>Status</th>
                                             <th>Dokumen</th>
+                                            <th></th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -65,11 +69,28 @@
                                             <td>{{ $item->ponsel }}</td>
                                             <td>{{ $item->alamat }}</td>
                                             <td>
+                                                @if ($item->status_alternatif == 0)
+                                                    <span class="badge bg-warning text-dark">Pending</span>
+                                                @elseif ($item->status_alternatif == 1)
+                                                    <span class="badge bg-success">Diterima</span>
+                                                @elseif ($item->status_alternatif == 2)
+                                                    <span class="badge bg-danger">Ditolak</span>
+                                                @endif
+                                            </td>
+
+                                            <td>
                                                 <a href="{{ route('pdf.download', ['id_mahasiswa' => $item->id_mahasiswa, 'id_form' => $item->id_form]) }}"
                                                     class="btn btn-sm btn-info m-1">
                                                     <i class="fas fa-download"></i> <b>View</b>
                                                 </a>
                                             </td>
+                                           <td>
+                                                <button data-toggle="modal" data-target="#modaldetail{{$item->id}}" 
+                                                        class="btn btn-sm btn-warning m-1">
+                                                    <i class="fas fa-edit"></i>
+                                                </button>
+                                            </td>
+
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -79,34 +100,66 @@
                     </div>
                 </div>
 
-                @foreach ($alternatif as $i)
+                @foreach ($alternatif as $item)
                 <!-- Modal Tambah Import -->
-                <div class="modal fade" id="modaldetail{{$i->id}}" tabindex="-1">
-                    <div class="modal-dialog modal-xl">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Detail Mahasiswa Pendaftar {{ $i->id }}</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                                <div class="modal-body">
-                                    <p class="mb-2 rounded alert alert-dark"><i class="fas fa-info-circle"></i> Import digunakan untuk menambahkan lebih dari satu file berformat EXCEL (.xlx atau .xlsx).</p>
-                                    <div class="form-group mb-3">
-                                        <label for="file">File Import</label>
-                                        <div class="custom-file">
-                                            <input type="file" name="file" class="custom-file-input" id="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
-                                            <label class="custom-file-label" for="file">Unggah file</label>
-                                        </div>
-                                        <small class="form-text text-success">Unggah file excel. *maximal ukuran 5mb</small>
-                                    </div>
+                <div class="modal fade" id="modaldetail{{$item->id}}" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                        <form action="{{ route('alternatif.update', $item->id) }}" method="POST">
+
+                            @csrf
+                            @method('PUT')
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Update Status - {{ $item->nama }}</h5>
+                                    <button type="button" class="close" data-dismiss="modal">
+                                        <span>&times;</span>
+                                    </button>
                                 </div>
+
+                                <div class="modal-body">
+
+                                    <!-- Select Status -->
+                                    <div class="form-group mb-3">
+                                        <label>Status</label>
+                                        <select class="form-control" name="status" id="statusSelect{{$item->id}}">
+                                            <option value="0" {{ $item->status_alternatif == 0 ? 'selected' : '' }}>Pending</option>
+                                            <option value="1" {{ $item->status_alternatif == 1 ? 'selected' : '' }}>Diterima</option>
+                                            <option value="2" {{ $item->status_alternatif == 2 ? 'selected' : '' }}>Ditolak</option>
+                                        </select>
+                                    </div>
+
+                                    <!-- Alasan (tampil hanya jika status=2) -->
+                                    <div class="form-group mb-3" id="alasanBox{{$item->id}}" 
+                                        style="display: {{ $item->status_alternatif == 2 ? 'block' : 'none' }};">
+                                        <label>Alasan Penolakan</label>
+                                        <textarea class="form-control" name="description" rows="3">{{ $item->alasan }}</textarea>
+                                    </div>
+
+                                </div>
+
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                                     <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Simpan</button>
                                 </div>
-                        </div>
+                            </div>
+
+                        </form>
                     </div>
                 </div>
+
             @endforeach
+            <script>
+                $(document).ready(function () {
+                    @foreach ($alternatif as $i)
+                        $('#statusSelect{{$i->id}}').on('change', function () {
+                            if ($(this).val() == '2') {
+                                $('#alasanBox{{$i->id}}').show();
+                            } else {
+                                $('#alasanBox{{$i->id}}').hide();
+                            }
+                        });
+                    @endforeach
+                });
+        </script>
+
 @endsection

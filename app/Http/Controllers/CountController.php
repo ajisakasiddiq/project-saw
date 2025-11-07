@@ -135,14 +135,25 @@ class CountController extends Controller
     {
         $alternatif = DB::table('values')
             ->join('mahasiswa', 'values.id_mahasiswa', '=', 'mahasiswa.id')
+            ->join('alternatif', 'alternatif.id_mahasiswa', '=', 'mahasiswa.id')
             ->join('jurusan', 'mahasiswa.id_jurusan', '=', 'jurusan.id')
             ->join('prodi', 'mahasiswa.id_prodi', '=', 'prodi.id')
             ->join('form', 'values.id_form', '=', 'form.id')
-            ->orderBy('values.id', 'DESC')
+            ->where('values.id_form', $id)
             ->groupBy('values.id_mahasiswa')
-            ->where('values.id_form', '=', $id)
+            ->orderBy('values.id', 'DESC')
+            ->select(
+                'values.*',
+                'alternatif.status as status_alternatif',
+                'form.status as status_form',
+                'alternatif.description as alasan',
+                'mahasiswa.*',
+                'jurusan.*',
+                'prodi.*'
+            )
             ->get();
 
+        // dd($alternatif);
         $form = DB::table('form')
             ->where('id', '=', $id)->first();
 
@@ -155,6 +166,18 @@ class CountController extends Controller
         // $data['nama_form'] = $data['alternatif']->nama_form;
         return view('backend.hitung.detail', $data);
     }
+    public function update(Request $request, $id)
+    {
+        $item = Alternatif::findOrFail($id);
+
+        $item->update([
+            'status' => $request->status,
+            'description' => $request->description
+        ]);
+
+        return back()->with('success', 'Data berhasil diupdate');
+    }
+
     public function download($id_mahasiswa, $id_form)
     {
         // Ambil data dokumen dari database

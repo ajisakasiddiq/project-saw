@@ -9,7 +9,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $data['sub'] = DB::table('sub')->get();
         $data['kriteria'] = DB::table('kriteria')->get();
         $data['mahasiswa'] = DB::table('mahasiswa')->get();
         $data['user'] = DB::table('users')->where('role', '!=', 'Admin')->get();

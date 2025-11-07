@@ -14,9 +14,8 @@ class Alternatif extends Model
     protected $fillable = [
         'id_mahasiswa',
         'id_form',
-        'sub_input',
         'dokumen',
-        'nilai',
         'status',
+        'description',
     ];
 }

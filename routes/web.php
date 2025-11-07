@@ -44,6 +44,8 @@ Route::middleware('guest')->group(function () {
 Route::group(
     ['middleware' => ['auth', 'checkrole:Admin']],
     function () {
+        Route::get('/detail/{id}', [CountController::class, 'detail']);
+        Route::put('/detail/{id}/update', [CountController::class, 'update'])->name('alternatif.update');
         Route::get('/preferensikt', [CriteriaController::class, 'preferensi']);
         Route::post('/preferensikt', [CriteriaController::class, 'bobot']);
         Route::get('/tambahkt', [CriteriaController::class, 'tambah']);
@@ -79,7 +81,6 @@ Route::group(
         Route::get('/hapusfm/{id}', [FormController::class, 'hapus']);
         Route::get('/hitung', [CountController::class, 'index'])->name('hitung');
         Route::post('/hitung', [CountController::class, 'index'])->name('hitung');
-        Route::get('/detail/{id}', [CountController::class, 'detail']);
         Route::get('/dokumen/{id_mahasiswa}/{id_form}', [CountController::class, 'download'])->name('pdf.download');
         Route::get('/rank/{id}', [CountController::class, 'rank']);
     }
