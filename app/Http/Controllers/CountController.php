@@ -145,6 +145,7 @@ class CountController extends Controller
             ->select(
                 'values.*',
                 'alternatif.status as status_alternatif',
+                'alternatif.id as id_alternatif',
                 'form.status as status_form',
                 'alternatif.description as alasan',
                 'mahasiswa.*',
@@ -166,14 +167,17 @@ class CountController extends Controller
         // $data['nama_form'] = $data['alternatif']->nama_form;
         return view('backend.hitung.detail', $data);
     }
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $item = Alternatif::findOrFail($id);
+        // dd($request->all());
 
-        $item->update([
-            'status' => $request->status,
-            'description' => $request->description
-        ]);
+
+        $item = Alternatif::find($request->id);
+        // dd($item);
+
+        $item->status = $request->status;
+        $item->description = $request->description;
+        $item->save();
 
         return back()->with('success', 'Data berhasil diupdate');
     }

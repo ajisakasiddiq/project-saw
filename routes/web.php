@@ -45,7 +45,7 @@ Route::group(
     ['middleware' => ['auth', 'checkrole:Admin']],
     function () {
         Route::get('/detail/{id}', [CountController::class, 'detail']);
-        Route::put('/detail/{id}/update', [CountController::class, 'update'])->name('alternatif.update');
+        Route::post('/detail/{id}/update', [CountController::class, 'update'])->name('alternatif.update');
         Route::get('/preferensikt', [CriteriaController::class, 'preferensi']);
         Route::post('/preferensikt', [CriteriaController::class, 'bobot']);
         Route::get('/tambahkt', [CriteriaController::class, 'tambah']);

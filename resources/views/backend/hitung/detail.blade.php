@@ -104,10 +104,8 @@
                 <!-- Modal Tambah Import -->
                 <div class="modal fade" id="modaldetail{{$item->id}}" tabindex="-1">
                     <div class="modal-dialog modal-lg">
-                        <form action="{{ route('alternatif.update', $item->id) }}" method="POST">
-
+                        <form method="POST" action="/detail/{{$item->id}}/update">
                             @csrf
-                            @method('PUT')
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title">Update Status - {{ $item->nama }}</h5>
@@ -115,6 +113,7 @@
                                         <span>&times;</span>
                                     </button>
                                 </div>
+                                <input type="hidden" name="id" value="{{ $item->id_alternatif }}">
 
                                 <div class="modal-body">
 
