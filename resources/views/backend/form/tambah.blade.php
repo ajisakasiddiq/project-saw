@@ -27,18 +27,7 @@
                         @error('nama_form')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="jenis">Jenis Formulir</label>
-                        <select class="custom-select @error('jenis') is-invalid @enderror" name="jenis" id="jenis">
-                            <option value="">-- Pilih Jenis --</option>
-                            <option value="Pengangsuran UKT">Pengangsuran UKT</option>
-                            <option value="Penurunan UKT">Penuruan UKT</option>
-                        </select>
-                        <small id="jenisHelp" class="form-text text-muted">Pilih (jenis) formulir, Pengangsuran atau Penurunan.</small>
-                        @error('jenis')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        <input type="hidden" name="jenis" value="Penentuan UKT" id="">
                     </div>
                     <div class="form-group">
                         <label for="status">Status Formulir</label>

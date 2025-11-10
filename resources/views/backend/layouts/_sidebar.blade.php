@@ -141,15 +141,9 @@
             <li class="nav-item {{Request::is('lis*') ? 'active' : ''}}">
                 <a class="nav-link" href="/list">
                     <i class="fas fa-fw fa-list"></i>
-                    <span>Ranking</span></a>
+                    <span>Hasil Penentuan</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item {{Request::is('hasil*') ? 'active' : ''}}">
-                <a class="nav-link" href="/hasil">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Hasil</span></a>
-            </li>
             
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

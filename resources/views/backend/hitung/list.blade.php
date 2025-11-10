@@ -5,8 +5,8 @@
                 <!-- Awal Konten -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800">Hasil Ranking</h1>
-                    <p class="mb-4">Pada halaman ini menampilkan hasil rangking berdasarkan formulir, hanya Admin dan Pengelola yang diperbolehkan mengakses halaman ini.</p>
+                    <h1 class="h3 mb-2 text-gray-800">Hasil Penentuan UKT</h1>
+                    <p class="mb-4">Pada halaman ini menampilkan hasil penentuan berdasarkan formulir.</p>
                     @include('template.alert')
                     <!-- DataTales Example -->
                     <div class="card shadow d-flex justify mb-4">
@@ -23,7 +23,6 @@
                                             <th>No.</th>
                                             <th>Nama Formulir</th>
                                             <th>Tanggal Pembuatan</th>
-                                            <th>Jenis</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -32,7 +31,6 @@
                                             <th>No.</th>
                                             <th>Nama Formulir</th>
                                             <th>Tanggal Pembuatan</th>
-                                            <th>Jenis</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
@@ -43,13 +41,6 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $item->nama_form }}</td>
                                             <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
-                                            <td>
-                                                @if ($item->jenis == 'Pengangsuran UKT')
-                                                    <span class="badge badge-primary">Pengangsuran UKT</span>
-                                                @else
-                                                    <span class="badge badge-info">Penurunan UKT</span>
-                                                @endif
-                                            </td>
                                             <td>
                                                 <a href="list/detail/{{ $item->id }}" class="btn btn-sm btn-success m-1"><i class="fas fa-list"></i>
                                                 <b>Detail</b></a>

@@ -23,7 +23,6 @@
                                             <th>No.</th>
                                             <th>Nama Formulir</th>
                                             <th>Tanggal Pembuatan</th>
-                                            <th>Jenis</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -32,7 +31,6 @@
                                             <th>No.</th>
                                             <th>Nama Formulir</th>
                                             <th>Tanggal Pembuatan</th>
-                                            <th>Jenis</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
@@ -43,13 +41,6 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $item->nama_form }}</td>
                                             <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
-                                            <td>
-                                                @if ($item->jenis == 'Pengangsuran UKT')
-                                                    <span class="badge badge-primary">Pengangsuran UKT</span>
-                                                @else
-                                                    <span class="badge badge-info">Penurunan UKT</span>
-                                                @endif
-                                            </td>
                                             <td>
                                                 <a href="hasil/detail/{{ $item->id }}" class="btn btn-sm btn-success m-1"><i class="fas fa-users"></i>
                                                 <b>Detail</b></a>

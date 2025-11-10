@@ -98,8 +98,8 @@ Route::group(
         Route::post('/kuota', [CountController::class, 'kuota']);
         Route::get('/list', [CountController::class, 'list'])->name('list');
         Route::get('/list/detail/{id}', [CountController::class, 'sort']);
-        Route::get('/hasil', [CountController::class, 'hasil'])->name('hasil');
-        Route::get('/hasil/detail/{id}', [CountController::class, 'final']);
+        // Route::get('/hasil', [CountController::class, 'hasil'])->name('hasil');
+        // Route::get('/hasil/detail/{id}', [CountController::class, 'final']);
     }
 );
 
