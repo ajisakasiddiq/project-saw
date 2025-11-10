@@ -10,19 +10,6 @@
                     @include('template.alert')
                     <!-- DataTales Example -->
                     <div class="card shadow d-flex justify mb-4">
-                        <div class="card-header py-3">
-                            <a href="{{route('list')}}" class="btn btn-secondary m-1">
-                            <i class="fas fa-arrow-left"></i> Kembali</a>
-                            @if (Auth::user()->role == "Pengelola")
-                                @if($kuota_form == "")
-                                <button data-toggle="modal" data-target="#modalkuota" class="btn btn-info m-1"><i class="fas fa-users"></i>
-                                    <b>Kuota Penerima</b></button>
-                                @else
-                                    <button class="btn disabled btn-info m-1"><i class="fas fa-users"></i>
-                                        <b>Kuota Penerima</b></button>
-                                @endif
-                            @endif
-                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="rank" width="100%" cellspacing="0">

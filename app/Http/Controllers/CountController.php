@@ -32,38 +32,6 @@ class CountController extends Controller
         return view('backend.hitung.index', $data);
     }
 
-    function kuota(Request $request)
-    {
-        $request->validate([
-            'kuota' => 'required',
-        ], [
-            'kuota.required' => 'Kuota wajib diisi'
-        ]);
-
-        $form = Form::find($request->id_kuota);
-
-        $form->kuota = $request->kuota;
-        $form->save();
-
-        $values = DB::table('results')
-            ->where('id_form', '=', $request->id_kuota)
-            ->where('total_nilai', '!=', '')
-            ->get();
-
-        for ($i = 0; $i < count($values); $i++) {
-            if ($i < $request->kuota) {
-                $status = '1';
-            } else {
-                $status = '2';
-            }
-
-            $alt = Result::find($values[$i]->id);
-            $alt->status = $status;
-            $alt->save();
-        }
-
-        return redirect()->route('hasil')->with(['success' => 'Setting Jumlah Kuota Penerima Berhasil!']);
-    }
 
     public function hasil()
     {
@@ -106,7 +74,6 @@ class CountController extends Controller
             'alternatif' => $alternatif,
             'id_form' => $form->id,
             'nama_form' => $form->nama_form,
-            'kuota_form' => $form->kuota,
             'dibuat' => $form->created_at,
         ];
 
@@ -259,7 +226,6 @@ class CountController extends Controller
             'kriteria' => $kriteria,
             'id_form' => $form->id,
             'nama_form' => $form->nama_form,
-            'kuota_form' => $form->kuota,
             'dibuat' => $form->created_at,
         ];
         // $data['nama_form'] = $data['alternatif']->nama_form;
