@@ -29,10 +29,7 @@
                                             <th>Nama Mahasiswa</th>
                                             <th>Jurusan</th>
                                             <th>Program Studi</th>
-                                            <th>Angkatan</th>
-                                            <th>Semester</th>
                                             <th>Jalur Masuk</th>
-                                            <th>UKT</th>
                                             <th>Ponsel</th>
                                             <th>Alamat</th>
                                             @if (Auth::user()->role == "Admin")
@@ -47,10 +44,7 @@
                                             <th>Nama Mahasiswa</th>
                                             <th>Jurusan</th>
                                             <th>Program Studi</th>
-                                            <th>Angkatan</th>
-                                            <th>Semester</th>
                                             <th>Jalur Masuk</th>
-                                            <th>UKT</th>
                                             <th>Ponsel</th>
                                             <th>Alamat</th>
                                             @if (Auth::user()->role == "Admin")
@@ -67,10 +61,7 @@
                                             <td>{{ $item->nama }}</td>
                                             <td>{{ $item->nama_jurusan }}</td>
                                             <td>{{ $item->nama_prodi }}</td>
-                                            <td>{{ $item->angkatan }}</td>
-                                            <td>{{ $item->semester }}</td>
                                             <td>{{ $item->jalur_masuk }}</td>
-                                            <td>{{ $item->ukt_sekarang}}</td>
                                             <td>{{ $item->ponsel }}</td>
                                             <td>{{ $item->alamat }}</td>
                                             @if (Auth::user()->role == "Admin")

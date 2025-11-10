@@ -65,6 +65,7 @@
                                                 {{-- ✅ Jika ada alternatif dan status_alternatif = 2 --}}
                                                 @if (!empty($item->status_alternatif) && $item->status_alternatif == 2)
                                                     <span class="badge badge-danger">Dokumen Ditolak</span> <br>
+                                                    <p>{{ $item->description_alternatif }}</p>
                                                     <button data-toggle="modal" data-target="#modaldetail{{$item->id_alternatif}}" class="btn btn-sm btn-info m-1"><i class="fas fa-eye"></i>
                                                     <b>Upload</b></button>
                                                    

@@ -80,10 +80,7 @@ class CollegeController extends Controller
             'nama' => 'required',
             'jurusan' => 'required',
             'prodi' => 'required',
-            'angkatan' => 'required|max:4',
-            'semester' => 'required|max:2',
             'jalur_masuk' => 'required',
-            'ukt' => 'required',
             'ponsel' => 'required|max:13',
             'alamat' => 'required',
         ], [
@@ -94,10 +91,7 @@ class CollegeController extends Controller
             'nama.required' => 'Nama Mahasiswa wajib diisi',
             'jurusan.required' => 'Jurusan wajib diisi',
             'prodi.required' => 'Program Studi wajib diisi',
-            'angkatan.required' => 'Angkatan Mahasiswa wajib diisi',
-            'semester.required' => 'Semester Mahasiswa wajib diisi',
             'jalur_masuk.required' => 'Jalur Masuk wajib diisi',
-            'ukt.required' => 'UKT Mahasisa wajib diisi',
             'ponsel.required' => 'Nomor Ponsel wajib diisi',
             'alamat.required' => 'Alamat wajib diisi',
         ]);
@@ -107,10 +101,7 @@ class CollegeController extends Controller
         $save->nama = trim($request->nama);
         $save->id_jurusan = trim($request->jurusan);
         $save->id_prodi = trim($request->prodi);
-        $save->angkatan = trim($request->angkatan);
-        $save->semester = trim($request->semester);
         $save->jalur_masuk = trim($request->jalur_masuk);
-        $save->ukt_sekarang = trim($request->ukt);
         $save->ponsel = trim($request->ponsel);
         $save->alamat = trim($request->alamat);
         $save->save();
@@ -139,10 +130,7 @@ class CollegeController extends Controller
             'nama' => 'required',
             'jurusan' => 'required',
             // 'prodi' => 'required',
-            'angkatan' => 'required|max:4',
-            'semester' => 'required|max:2',
             'jalur_masuk' => 'required',
-            'ukt' => 'required',
             'ponsel' => 'required|max:13',
             'alamat' => 'required',
         ], [
@@ -152,10 +140,7 @@ class CollegeController extends Controller
             'nama.required' => 'Nama Mahasiswa wajib diisi',
             'jurusan.required' => 'Jurusan wajib diisi',
             // 'prodi.required' => 'Program Studi wajib diisi',
-            'angkatan.required' => 'Angkatan Mahasiswa wajib diisi',
-            'semester.required' => 'Semester Mahasiswa wajib diisi',
             'jalur_masuk.required' => 'Jalur Masuk wajib diisi',
-            'ukt.required' => 'UKT Mahasisa wajib diisi',
             'ponsel.required' => 'Nomor Ponsel wajib diisi',
             'alamat.required' => 'Alamat wajib diisi',
         ]);
@@ -170,10 +155,7 @@ class CollegeController extends Controller
         } else {
             $save->id_prodi = trim($request->prodi);
         }
-        $save->angkatan = trim($request->angkatan);
-        $save->semester = trim($request->semester);
         $save->jalur_masuk = trim($request->jalur_masuk);
-        $save->ukt_sekarang = trim($request->ukt);
         $save->ponsel = trim($request->ponsel);
         $save->alamat = trim($request->alamat);
         $save->save();

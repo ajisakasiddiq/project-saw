@@ -25,8 +25,6 @@
                                             <th>No.</th>
                                             <th>Nama Formulir</th>
                                             <th>Tanggal Pembuatan</th>
-                                            <th>Kuota</th>
-                                            <th>Jenis</th>
                                             <th>Status</th>
                                             @if (Auth::user()->role == "Admin")
                                             <th>Aksi</th>
@@ -38,8 +36,6 @@
                                             <th>No.</th>
                                             <th>Nama Formulir</th>
                                             <th>Tanggal Pembuatan</th>
-                                            <th>Kuota</th>
-                                            <th>Jenis</th>
                                             <th>Status</th>
                                             @if (Auth::user()->role == "Admin")
                                             <th>Aksi</th>
@@ -53,21 +49,6 @@
                                             <td>{{ $no++ }}</td>
                                             <td>{{ $item->nama_form }}</td>
                                             <td>{{ date('d/m/Y', strtotime($item->created_at)) }}</td>
-                                            <td><?php 
-                                            if ($item->kuota == "" || $item->kuota == null) { 
-                                                echo 'Kuota belum ditentukan'; 
-                                            } else {
-                                                echo $item->kuota.' Penerima';
-                                            }
-                                            ?>
-                                            </td>
-                                            <td>
-                                                @if ($item->jenis == 'Pengangsuran UKT')
-                                                    <span class="badge badge-primary">Pengangsuran UKT</span>
-                                                @else
-                                                    <span class="badge badge-info">Penurunan UKT</span>
-                                                @endif
-                                            </td>
                                             <td>
                                                 @if ($item->status == "0")
                                                     <span class="badge badge-secondary">Tidak Aktif</span>

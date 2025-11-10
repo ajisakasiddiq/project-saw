@@ -28,6 +28,7 @@ class RegisterController extends Controller
                 'form.*',
                 'alternatif.status as status_alternatif',
                 'alternatif.id as id_alternatif',
+                'alternatif.description as description_alternatif',
             )
             ->get();
 

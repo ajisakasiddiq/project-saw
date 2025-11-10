@@ -16,10 +16,7 @@ class College extends Model
         'nama',
         'id_jurusan',
         'id_prodi',
-        'angkatan',
-        'semester',
         'jalur_masuk',
-        'ukt_sekarang',
         'ponsel',
         'alamat',
     ];

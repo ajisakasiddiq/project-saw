@@ -17,10 +17,7 @@ return new class extends Migration
             $table->string('nama');
             $table->foreignId('id_jurusan')->constrained('jurusan')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('id_prodi')->constrained('prodi')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('angkatan');
-            $table->integer('semester');
             $table->string('jalur_masuk');
-            $table->string('ukt_sekarang');
             $table->string('ponsel');
             $table->text('alamat');
             $table->timestamps();

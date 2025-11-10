@@ -245,7 +245,6 @@ class CountController extends Controller
             ->join('form', 'alternatif.id_form', '=', 'form.id')
             ->where('form.id', '=', $id)
             ->where('alternatif.status', '!=', '0')
-            ->orderByDesc('alternatif.nilai')
             // ->where('alternatif.sub_bobot', '!=', '')
             ->get();
 
@@ -254,15 +253,10 @@ class CountController extends Controller
 
         $kriteria = DB::table('kriteria')->orderByDesc('bobot')->get();
 
-        foreach ($kriteria as $k) {
-            $subQuery[] = DB::table('sub')->where('id_kriteria', '=', $k->id)->orderBy('sub.bobot', 'ASC')->get();
-        }
-
         $data = [
             'results' => $results,
             'alternatif' => $alternatif,
             'kriteria' => $kriteria,
-            'sub' => $subQuery,
             'id_form' => $form->id,
             'nama_form' => $form->nama_form,
             'kuota_form' => $form->kuota,

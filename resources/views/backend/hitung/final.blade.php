@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'Data Lengkap Pengajuan '. $nama_form .' | SPK-AHP')
+@section('title', 'Data Lengkap Penentuan '. $nama_form .' | SPK-SAW')
 {{-- @endsection --}}
 @section('content')
                 <!-- Awal Konten -->
