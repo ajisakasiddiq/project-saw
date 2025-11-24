@@ -24,7 +24,7 @@
                         <label for="nama_form">Nama Formulir</label>
                         <input type="text" class="form-control form-control-user @error('nama_form') is-invalid @enderror" id="nama_form" placeholder="Masukkan Nama"
                             name="nama_form" value="{{$val->nama_form}}">
-                        <small id="namaHelp" class="form-text text-muted">Bebas, contoh "Penuruan UKT Gelombang 1 (2024)".</small>
+                        <small id="namaHelp" class="form-text text-muted">Bebas, contoh "Penuruan UKT Gelombang 1 (2025)".</small>
                         @error('nama_form')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -33,8 +33,8 @@
                         <label for="jenis">Jenis Formulir</label>
                         <select class="custom-select @error('jenis') is-invalid @enderror" name="jenis" id="jenis">
                             <option value="">-- Pilih Jenis --</option>
-                            <option value="Pengangsuran UKT" {{ $val->jenis == "Pengangsuran UKT" ? 'selected' : '' }}>Pengangsuran UKT</option>
-                            <option value="Penurunan UKT" {{ $val->jenis == "Penurunan UKT" ? 'selected' : '' }}>Penuruan UKT</option>
+                            <option value="Perhitungan UKT" {{ $val->jenis == "Perhitungan UKT" ? 'selected' : '' }}>Perhitungan UKT</option>
+                            {{-- <option value="Penurunan UKT" {{ $val->jenis == "Penurunan UKT" ? 'selected' : '' }}>Penuruan UKT</option> --}}
                         </select>
                         <small id="jenisHelp" class="form-text text-muted">Pilih (jenis) formulir, Pengangsuran atau Penurunan.</small>
                         @error('jenis')
