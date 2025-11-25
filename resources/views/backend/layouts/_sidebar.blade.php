@@ -6,7 +6,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fa fa-code mr-2"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">SPK-AHP</div>
+                <div class="sidebar-brand-text mx-3">SPK-SAW</div>
             </a>
 
             <!-- Sidebar Profil -->

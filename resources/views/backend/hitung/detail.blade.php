@@ -24,7 +24,7 @@
                                             <th>Nama Mahasiswa</th>
                                             <th>Jurusan</th>
                                             <th>Program Studi</th>
-                                            <th>Angkatan</th>
+                                            {{-- <th>Angkatan</th> --}}
                                             <th>Semester</th>
                                             <th>Jalur Masuk</th>
                                             <th>UKT</th>
@@ -42,7 +42,7 @@
                                             <th>Nama Mahasiswa</th>
                                             <th>Jurusan</th>
                                             <th>Program Studi</th>
-                                            <th>Angkatan</th>
+                                            {{-- <th>Angkatan</th> --}}
                                             <th>Semester</th>
                                             <th>Jalur Masuk</th>
                                             <th>UKT</th>
@@ -62,12 +62,12 @@
                                             <td>{{ $item->nama }}</td>
                                             <td>{{ $item->nama_jurusan }}</td>
                                             <td>{{ $item->nama_prodi }}</td>
-                                            <td>{{ $item->angkatan }}</td>
+                                            {{-- <td>{{ $item->angkatan }}</td>
                                             <td>{{ $item->semester }}</td>
                                             <td>{{ $item->jalur_masuk }}</td>
                                             <td>{{ $item->ukt_sekarang}}</td>
                                             <td>{{ $item->ponsel }}</td>
-                                            <td>{{ $item->alamat }}</td>
+                                            <td>{{ $item->alamat }}</td> --}}
                                             <td>
                                                 @if ($item->status_alternatif == 0)
                                                     <span class="badge bg-warning text-dark">Pending</span>
