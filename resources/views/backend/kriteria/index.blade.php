@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'Data Kriteria | SPK-AHP')
+@section('title', 'Data Kriteria | SPK-SAW')
 {{-- @endsection --}}
 @section('content')
                 <!-- Awal Konten -->
@@ -15,8 +15,8 @@
                             <a href="/tambahkt" class="btn btn-primary m-1 btn-icon-text btn-rounded">
                                     <i class="fas fa-plus-circle"></i> Tambah
                                     Kriteria </a>
-                            <a href="/preferensikt" class="btn btn-info m-1 btn-icon-text btn-rounded">
-                                    <i class="fa fa-sync"></i> Bobot Preferensi AHP </a>
+                            {{-- <a href="/preferensikt" class="btn btn-info m-1 btn-icon-text btn-rounded">
+                                    <i class="fa fa-sync"></i> Bobot Preferensi SAW </a> --}}
                         </div>
                         @endif
                         <div class="alert alert-info">

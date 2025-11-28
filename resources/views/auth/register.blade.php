@@ -8,7 +8,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>Daftar Akun | SPK-AHP</title>
+    <title>Daftar Akun | SPK-SAW</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{ url('assets/vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css" />
@@ -16,11 +16,11 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ url('assets/css/sb-admin-2.min.css') }}" rel="stylesheet" />
-    <link rel="shortcut icon" href="{{ url('assets/img/ico/favicon.ico') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{ url('assets/img/logo/poliwangi.png') }}" type="image/x-icon">
     <!-- <link rel="icon" href="{{ url('assets/') }}img/ico/favicon.ico" type="image/x-icon"> -->
     <!-- Fav Icon -->
-    <link rel="icon" type="image/png" href="{{ url('assets/img/ico/favicon-32x32.png') }}" sizes="32x32" />
-    <link rel="icon" type="image/png" href="{{ url('assets/img/ico/favicon-16x16.png') }}" sizes="16x16" />
+    {{-- <link rel="icon" type="image/png" href="{{ url('assets/img/ico/favicon-32x32.png') }}" sizes="32x32" />
+    <link rel="icon" type="image/png" href="{{ url('assets/img/ico/favicon-16x16.png') }}" sizes="16x16" /> --}}
 </head>
 
 <body class="bg-gradient-primary">

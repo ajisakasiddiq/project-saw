@@ -1,5 +1,5 @@
 @extends('backend.layouts.app')
-@section('title', 'Beranda | SPK-AHP')
+@section('title', 'Beranda | SPK-SAW')
 {{-- @endsection --}}
 @section('content')
                 <!-- Awal Konten -->

@@ -6,7 +6,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
     <title>SPK-SAW</title>
-    <link rel="icon" href="{{ url('assets/img/ico/favicon-32x32.png') }}" type="image/png">
+    <link rel="icon" href="{{ url('assets/img/logo/poliwangi.png') }}" type="image/png">
 
     <!-- Google Fonts & Icons -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
