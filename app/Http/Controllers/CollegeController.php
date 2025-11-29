@@ -76,7 +76,7 @@ class CollegeController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-            'nim' => 'required|max:9|min:9|unique:mahasiswa',
+            'nim' => 'required|max:12|min:12|unique:mahasiswa',
             'nama' => 'required',
             'jurusan' => 'required',
             'prodi' => 'required',
