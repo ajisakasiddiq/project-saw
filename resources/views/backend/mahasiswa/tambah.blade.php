@@ -60,24 +60,6 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label for="angkatan">Angkatan</label>
-                        <input type="number" class="form-control form-control-user @error('angkatan') is-invalid @enderror" value="{{old('angkatan')}}" id="angkatan" placeholder="Masukkan Tahun Angkatan"
-                        name="angkatan" min="1900" max="2099" step="1">
-                        <small id="angkatanHelp" class="form-text text-muted">Masukkan tahun angkatan.</small>
-                        @error('angkatan')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="semester">Semester</label>
-                        <input type="number" class="form-control form-control-user @error('semester') is-invalid @enderror" value="{{old('semester')}}" id="semester" placeholder="Masukkan Semester"
-                        name="semester" min="1">
-                        <small id="semesterHelp" class="form-text text-muted">Masukkan semester mahasiswa.</small>
-                        @error('semester')
-                        <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
                         <label for="jalur_masuk">Jalur Masuk</label>
                         <select class="custom-select @error('jalur_masuk') is-invalid @enderror" name="jalur_masuk" value="{{old('jalur_masuk')}}" id="jalur_masuk">
                             <option value="">-- Pilih Jalur Masuk --</option>
@@ -91,15 +73,6 @@
                         <small id="jalur_masukHelp" class="form-text text-muted">Pilih jalur masuk.</small>
                         @error('jalur_masuk')
                             <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="ukt">UKT Sekarang</label>
-                        <input type="text" class="form-control form-control-user @error('ukt') is-invalid @enderror" value="{{old('ukt')}}" id="ukt" placeholder="Masukkan UKT Saat Ini"
-                        name="ukt">
-                        <small id="uktHelp" class="form-text text-muted">Masukkan ukt mahasiswa.</small>
-                        @error('ukt')
-                        <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="form-group">

@@ -76,17 +76,15 @@ class CollegeController extends Controller
     public function create(Request $request)
     {
         $request->validate([
-            'nim' => 'required|max:12|min:12|unique:mahasiswa',
+            'nim' => 'required|unique:mahasiswa',
             'nama' => 'required',
             'jurusan' => 'required',
             'prodi' => 'required',
             'jalur_masuk' => 'required',
-            'ponsel' => 'required|max:13',
+            'ponsel' => 'required',
             'alamat' => 'required',
         ], [
             'nim.required' => 'NIM wajib diisi',
-            'nim.min' => 'NIM tidak boleh kurang dari 9 karakter',
-            'nim.max' => 'NIM maksimal berjumlah 9 karakter',
             'nim.unique' => 'NIM sudah terdaftar',
             'nama.required' => 'Nama Mahasiswa wajib diisi',
             'jurusan.required' => 'Jurusan wajib diisi',
